@@ -1,0 +1,29 @@
+<div xmlns:th="http://www.thymeleaf.org">
+<nav th:fragment="menu">
+    <ul>
+        <li><a th:href="@{/}">Genres</a></li>
+    </ul>
+</nav>
+
+<head th:fragment="head(title)" xmlns:th="http://www.thymeleaf.org">
+    <link rel="icon" th:href="@{/images/movies.ico}" type="image/x-icon">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/css/video.css}">
+</head>
+
+    <table th:fragment="filmTabel(films)" xmlns:th="http://www.thymeleaf.org"
+           id="filmtabel">
+        <thead>
+        <tr>
+            <th>Film</th>
+            <th>Prijs</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="film : ${alleFilms}" th:object="${film}">
+            <td th:text="*{titel}"></td>
+            <td th:text="*{{prijs}}" class="getal"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

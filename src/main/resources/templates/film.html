@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments::head(title=${film})"></head>
+
+<body>
+<nav th:replace="fragments::menu"></nav>
+<th:block th:if="${film}" th:object="${film}">
+        <img th:src="@{/images/{id}.jpg(id=*{id})}" th:alt="*{titel}">
+    <dt>Prijs</dt><dd th:text="'€'+*{prijs}"></dd>
+    <dt>Voorraad</dt><dd th:text="*{voorraad}"></dd>
+    <dt>Gereserveerd</dt><dd th:text="*{gereserveerd}"></dd>
+    <dt>Beschikbaar</dt><dd th:text="*{voorraad-gereserveerd}"></dd>
+    <ul th:if="*{voorraad-gereserveerd} > 0">
+        <form method="post" th:action="@{/mandje/{id}(id=*{id})}">
+            <button>Reserveer</button>
+        </form>
+    </ul>
+</th:block>
+
+</body>
+</html>
