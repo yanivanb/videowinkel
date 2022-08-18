@@ -5,21 +5,21 @@
 <nav th:replace="fragments::menu"></nav>
 <h1>Mandje</h1>
 <th:block th:if="not ${films.isEmpty()}">
-    <form th:action="@{/gastenboek/verwijderen}"
+    <form th:action="@{/mandje/verwijderen}"
           method="post">
     <table id="filmtabel">
         <thead>
         <tr>
             <th>Film</th>
             <th>Prijs</th>
-            <th>Prijs</th>
+            <th><button>Verwijder</button></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="film : ${films}" th:object="${film}">
             <td th:text="*{titel}"></td>
             <td th:text="*{{prijs}}" class="getal"></td>
-            <input type="checkbox" name="id" th:value="*{id}">
+            <td><input type="checkbox" name="id" th:value="*{id}"></td>
         </tr>
         </tbody>
     </table>

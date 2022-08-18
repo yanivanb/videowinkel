@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head
+        th:replace="fragments::head(title=${klant})"></head>
+<body>
+<nav th:replace="fragments::menu"></nav>
+    <h1 th:text="Klanten"></h1>
+
+<form method="post" th:action="@{/klant/{name}(name=*{name})}">
+    <label>Familienaam:<input th:field="*{name}"></label>
+    <button>Zoeken</button>
+</form>
+<th:block th:if="not ${klanten.isEmpty()}">
+    <ul>
+        <li th:each="klant : ${klanten}" th:object="${klant}">
+            <a th:text="*{voornaam}"></a>
+        </li>
+    </ul>
+</th:block>
+</body>
+</html>

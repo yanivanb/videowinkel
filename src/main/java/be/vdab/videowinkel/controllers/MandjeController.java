@@ -3,10 +3,7 @@ package be.vdab.videowinkel.controllers;
 import be.vdab.videowinkel.services.FilmService;
 import be.vdab.videowinkel.sessions.Mandje;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
@@ -28,12 +25,18 @@ public class MandjeController {
         return "redirect:/mandje";
     }
 
+
     @PostMapping("verwijderen")
+    public String delete(Optional<Long[]> id)
+    {
+        id.ifPresent(ids -> mandje.verwijderUit(ids));
+        return "redirect:/mandje";
+    }
+   /* @PostMapping("verwijderen")
     public String delete(Optional<Set<Long>> id) {
         id.ifPresent(ids -> mandje.verwijderUit(ids));
-// als de gebruikt geen enkele entry selecteerde, is id een lege Optional
-        return "redirect:/gastenboek";
-    }
+        return "redirect:/mandje";
+    }*/
 
     @GetMapping
     public ModelAndView toonMandje() {
