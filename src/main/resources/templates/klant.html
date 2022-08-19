@@ -12,10 +12,11 @@
       method="get" th:action="@{/klant/}">
     <label>Familienaam bevat:</label>
     <input th:field="*{naam}" autofocus required>
+    <span th:errors="*{naam}"></span>
     <button>Zoeken</button>
 </form>
-<th:block th:if="not ${klanten.isEmpty()}">
-    <table id="klantentabel">
+<th:block th:if="not ${klanten == null || klanten.isEmpty()}">
+    <table id="klantentabel" class="table table-striped">
         <thead>
         <tr>
             <th>Naam</th>
@@ -27,7 +28,6 @@
         <tbody>
         <tr th:each="klant : ${klanten}" th:object="${klant}">
             <td><a th:text="*{familienaam}+' '+*{voornaam}" th:href="@{/klant/bevestig/{id}(id=*{id})}"></a></td>
-
             <td th:text="*{straatNummer}"></td>
             <td th:text="*{postcode}"></td>
             <td th:text="*{gemeente}"></td>

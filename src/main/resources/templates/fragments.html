@@ -1,11 +1,17 @@
 <div xmlns:th="http://www.thymeleaf.org">
-<nav th:fragment="menu">
-    <ul>
-        <li><a th:href="@{/}">Genres</a></li>
-        <li><a th:href="@{/mandje}">Mandje</a></li>
-        <li><a th:href="@{/klant}">Klant</a></li>
-    </ul>
-</nav>
+    <nav th:fragment="menu">
+        <ul>
+            <li><a th:href="@{/}">Genres</a></li>
+            <li><a th:href="@{/mandje}">Mandje</a></li>
+            <li><a th:href="@{/klant}">Klant</a></li>
+        </ul>
+    </nav>
+
+    <nav th:fragment="menuGenre">
+        <ul>
+            <li><a th:href="@{/}">Genres</a></li>
+        </ul>
+    </nav>
 
 <head th:fragment="head(title)" xmlns:th="http://www.thymeleaf.org">
     <link rel="icon" th:href="@{/images/movies.ico}" type="image/x-icon">

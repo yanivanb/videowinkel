@@ -5,6 +5,7 @@ import be.vdab.videowinkel.services.FilmService;
 import be.vdab.videowinkel.services.KlantService;
 import be.vdab.videowinkel.sessions.Mandje;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +27,12 @@ public class KlantController {
     }
 
     @GetMapping()
-    public ModelAndView klantenForm(@Valid ZoekKlantForm form) {
-        return new ModelAndView("klant","klanten", klantService.findKlantListByName(form.naam())).addObject(new ZoekKlantForm(null));
+    public ModelAndView klanten(@Valid ZoekKlantForm form, Errors errors) {
+        var modelAndView = new ModelAndView("klant");
+        if (errors.hasErrors()) {
+            return modelAndView;
+        }
+        return modelAndView.addObject("klanten", klantService.findKlantListByName(form.naam()));
     }
 
     @GetMapping("/bevestig/{id}")

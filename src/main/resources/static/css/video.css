@@ -1,0 +1,41 @@
+body {
+    background-color: #FAFAFA;
+    font-family: sans-serif;
+}
+
+nav li, li, ul li {
+    display: inline;
+}
+
+nav, ul{
+    padding: 0;
+}
+
+th {
+    background-color: #808080;
+    color: #ffffff;
+    padding: 0.75em;
+    text-align: left;
+}
+
+tr{
+    background-color: #E6E6E6;
+}
+
+dd{
+    margin-inline-start: 0px;
+    font-weight: bold;
+}
+
+input, button {
+    display: block;
+}
+
+button {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.table-striped tbody tr:nth-of-type(even){
+    background: #FAFAFA;
+}

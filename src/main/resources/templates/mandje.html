@@ -12,14 +12,20 @@
         <tr>
             <th>Film</th>
             <th>Prijs</th>
-            <th><button>Verwijder</button></th>
+            <th><button>Verwijderen</button></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="film : ${films}" th:object="${film}">
             <td th:text="*{titel}"></td>
-            <td th:text="*{{prijs}}" class="getal"></td>
-            <td><input type="checkbox" name="id" th:value="*{id}"></td>
+            <td th:text="'€ '+*{{prijs}}" class="getal"></td>
+            <td style="text-align:center;"><input type="checkbox" name="id" th:value="*{id}"></td>
+        </tr>
+        <tr>
+            <td th:text="'Totaal:'"></td>
+            <td th:text="'€ '+${#aggregates.sum(films.![prijs])}"></td>
+
+            <td></td>
         </tr>
         </tbody>
     </table>

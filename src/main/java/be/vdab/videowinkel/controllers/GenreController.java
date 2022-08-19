@@ -25,7 +25,7 @@ public class GenreController {
         genreService.findById(id).ifPresent(genre ->
                 modelAndView.addObject(genre)
                         .addObject("films",
-                                filmService.findByGenreId(id)));
+                                filmService.findByGenreId(id)).addObject("genres", genreService.findAll()));
         return modelAndView;
     }
     @GetMapping("{id}/films")
