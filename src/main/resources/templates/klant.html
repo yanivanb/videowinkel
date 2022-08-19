@@ -6,16 +6,35 @@
 <nav th:replace="fragments::menu"></nav>
     <h1 th:text="Klanten"></h1>
 
-<form method="post" th:action="@{/klant/{name}(name=*{name})}">
-    <label>Familienaam:<input th:field="*{name}"></label>
+
+
+<form th:object="${zoekKlantForm}"
+      method="get" th:action="@{/klant/}">
+    <label>Familienaam bevat:</label>
+    <input th:field="*{naam}" autofocus required>
     <button>Zoeken</button>
 </form>
 <th:block th:if="not ${klanten.isEmpty()}">
-    <ul>
-        <li th:each="klant : ${klanten}" th:object="${klant}">
-            <a th:text="*{voornaam}"></a>
-        </li>
-    </ul>
+    <table id="klantentabel">
+        <thead>
+        <tr>
+            <th>Naam</th>
+            <th>Straat - Huisnummer</th>
+            <th>Postcode</th>
+            <th>Gemeente</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="klant : ${klanten}" th:object="${klant}">
+            <td><a th:text="*{familienaam}+' '+*{voornaam}" th:href="@{/klant/bevestig/{id}(id=*{id})}"></a></td>
+
+            <td th:text="*{straatNummer}"></td>
+            <td th:text="*{postcode}"></td>
+            <td th:text="*{gemeente}"></td>
+        </tr>
+        </tbody>
+    </table>
+
 </th:block>
 </body>
 </html>

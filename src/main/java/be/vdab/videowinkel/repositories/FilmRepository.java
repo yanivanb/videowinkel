@@ -58,4 +58,36 @@ public class FilmRepository {
                 + "?) order by id";
         return template.query(sql, filmMapper, ids.toArray());
     }
+
+    public void reserveerFilmsByIds(Set<Long> ids) {
+        if (ids.isEmpty()) {
+            System.out.println("Ids waren leeg, put exception error here");
+        }
+        else {
+            var sql = """
+            UPDATE films
+            set gereserveerd = gereserveerd+1
+            WHERE id in(
+        """
+                    + "?,".repeat(ids.size() - 1)
+                    + "?)";
+            template.update(sql, ids.toArray());
+        }
+    }
+
+    public List<Film> findGereserveerdByIds(Set<Long> ids) {
+        if (ids.isEmpty()) {
+            return List.of();
+        }
+        var sql = """
+        select id, genreId,titel, voorraad, gereserveerd, prijs
+        from films
+        where id in (
+        """
+                + "?,".repeat(ids.size() - 1)
+                + "?) AND voorraad <= gereserveerd order by id";
+        return template.query(sql, filmMapper, ids.toArray());
+    }
+
+
 }

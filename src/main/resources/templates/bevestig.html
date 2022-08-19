@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments::head(title=${bevestig})">
+</head>
+<body>
+<nav th:replace="fragments::menu"></nav>
+<h1>Bevestigen</h1>
+<th:block>
+    <p th:text="${films.size()}+' film(s) voor '+ ${klant.voornaam}+' '+${klant.familienaam}"></p>
+    <form action="/rapport">
+        <button>Bevestigen</button>
+    </form>
+</th:block>
+</body>
+
+</html>

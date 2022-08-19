@@ -32,11 +32,6 @@ public class MandjeController {
         id.ifPresent(ids -> mandje.verwijderUit(ids));
         return "redirect:/mandje";
     }
-   /* @PostMapping("verwijderen")
-    public String delete(Optional<Set<Long>> id) {
-        id.ifPresent(ids -> mandje.verwijderUit(ids));
-        return "redirect:/mandje";
-    }*/
 
     @GetMapping
     public ModelAndView toonMandje() {

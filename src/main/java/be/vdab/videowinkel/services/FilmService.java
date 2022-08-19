@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class FilmService {
     private final FilmRepository filmRepository;
     private final GenreRepository genreRepository;
@@ -32,6 +32,13 @@ public class FilmService {
 
     public List<Film> findByGenreId(long id) {
         return filmRepository.findByGenreId(id);
+    }
+
+    public List<Film> findGereserveerdByIds(Set<Long> id) {
+        return filmRepository.findGereserveerdByIds(id);
+    }
+    public void reserveerFilmsByIds(Set<Long> ids){
+        filmRepository.reserveerFilmsByIds(ids);
     }
 
 }

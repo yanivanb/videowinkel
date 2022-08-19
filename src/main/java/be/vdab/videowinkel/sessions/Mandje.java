@@ -12,6 +12,7 @@ import java.util.Set;
 @SessionScope
 public class Mandje implements Serializable {
     private static final long serialVersionUID = 1L;
+    private long klantId = 0;
     private final Set<Long> ids = new LinkedHashSet<>();
     public void voegToe(long id) {
         ids.add(id);
@@ -20,12 +21,20 @@ public class Mandje implements Serializable {
     public void verwijderUit(Long[] id){
         ids.removeAll(Arrays.stream(id).toList());
     }
-    /*
-    public void verwijderUit(Set<Long> id){
-        ids.removeAll(id);
-    }*/
 
     public Set<Long> getIds() {
         return ids;
+    }
+
+    public void setKlantId(long klantId) {
+        this.klantId = klantId;
+    }
+    public long getKlantId() {
+        return klantId;
+    }
+
+    public void clearMandje() {
+        setKlantId(0);
+        getIds().clear();
     }
 }

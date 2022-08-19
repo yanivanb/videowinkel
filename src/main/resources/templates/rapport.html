@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments::head(title='Rapport')">
+</head>
+<body>
+<nav th:replace="fragments::menu"></nav>
+<h1>Rapport</h1>
+<div th:if="${films == null || films.isEmpty()}" class="boodschap">De reservatie is OK.</div>
+
+<th:block th:if="not ${films == null || films.isEmpty()}">
+    <p>De reservatie kon niet doorgaan doordat de volgende film(s) niet beschikbaar zijn:</p>
+    <li th:each="film : ${films}" th:object="${film}" th:text="*{titel}"></li>
+</th:block>
+</body>
+
+</html>
