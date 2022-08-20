@@ -13,7 +13,7 @@
     <label>Familienaam bevat:</label>
     <input th:field="*{naam}" autofocus required>
     <span th:errors="*{naam}"></span>
-    <button>Zoeken</button>
+    <button class="zoekKlant">Zoeken</button>
 </form>
 <th:block th:if="not ${klanten == null || klanten.isEmpty()}">
     <table id="klantentabel" class="table table-striped">

@@ -2,6 +2,7 @@ package be.vdab.videowinkel.repositories;
 
 import be.vdab.videowinkel.domain.Film;
 import be.vdab.videowinkel.domain.Genre;
+import be.vdab.videowinkel.exceptions.ReserveerFilmsException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -61,7 +62,7 @@ public class FilmRepository {
 
     public void reserveerFilmsByIds(Set<Long> ids) {
         if (ids.isEmpty()) {
-            System.out.println("Ids waren leeg, put exception error here");
+            throw new ReserveerFilmsException("Er waren geen ids aanwezig");
         }
         else {
             var sql = """

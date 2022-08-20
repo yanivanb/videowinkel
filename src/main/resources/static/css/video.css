@@ -27,13 +27,12 @@ dd{
     font-weight: bold;
 }
 
-input, button {
-    display: block;
-}
-
 button {
     margin-top: 1em;
     margin-bottom: 1em;
+}
+.zoekKlant {
+    display: block;
 }
 
 .table-striped tbody tr:nth-of-type(even){

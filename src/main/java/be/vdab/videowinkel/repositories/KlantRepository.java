@@ -23,10 +23,10 @@ public class KlantRepository {
 
     public List<Klant> findKlantListByName(String name) {
         try {
-            var sql = """
+            //name = "'%"+name+"%'";
+            var sql = """            
             select id, familienaam, voornaam, straatNummer, postcode, gemeente from klanten
             where familienaam like '%"""+name+"%' order by familienaam";
-            System.out.println(sql);
             return template.query(sql, klantMapper);
         } catch (IncorrectResultSizeDataAccessException ex) {
             return null;
