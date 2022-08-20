@@ -1,6 +1,5 @@
 package be.vdab.videowinkel.repositories;
 
-import be.vdab.videowinkel.domain.Genre;
 import be.vdab.videowinkel.domain.Klant;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,7 +22,6 @@ public class KlantRepository {
 
     public List<Klant> findKlantListByName(String name) {
         try {
-            //name = "'%"+name+"%'";
             var sql = """            
             select id, familienaam, voornaam, straatNummer, postcode, gemeente from klanten
             where familienaam like '%"""+name+"%' order by familienaam";

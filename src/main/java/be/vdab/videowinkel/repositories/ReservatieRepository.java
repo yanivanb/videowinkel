@@ -18,15 +18,6 @@ public class ReservatieRepository {
         this.insert = new SimpleJdbcInsert(template).withTableName("reservaties");
     }
 
-
-    public long create(long klantId, long filmId) {
-        return insert.executeAndReturnKey(
-                        Map.of("klantId", klantId,
-                                "filmId", filmId,
-                                "reservatie", LocalDate.now()))
-                .longValue();
-    }
-
     public void create(long klantId, Set<Long> filmId) {
         for(var id : filmId){
             insert.execute(

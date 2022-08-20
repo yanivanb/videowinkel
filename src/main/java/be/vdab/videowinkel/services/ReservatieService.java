@@ -15,10 +15,6 @@ public class ReservatieService {
         this.reservatieRepository = reservatieRepository;
     }
 
-    public long create(long klantId, long filmId){
-        return reservatieRepository.create(klantId, filmId);
-    }
-
     public void create(long klantId, Set<Long> filmId){
         reservatieRepository.create(klantId, filmId);
     }

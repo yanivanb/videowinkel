@@ -1,7 +1,6 @@
 package be.vdab.videowinkel.controllers;
 
 import be.vdab.videowinkel.services.FilmService;
-import be.vdab.videowinkel.services.GenreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,10 +23,5 @@ public class FilmController {
                 modelAndView.addObject(film));
         return modelAndView;
     }
-
-
-
-
-
 
 }

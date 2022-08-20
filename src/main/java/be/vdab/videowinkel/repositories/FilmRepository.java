@@ -1,7 +1,6 @@
 package be.vdab.videowinkel.repositories;
 
 import be.vdab.videowinkel.domain.Film;
-import be.vdab.videowinkel.domain.Genre;
 import be.vdab.videowinkel.exceptions.ReserveerFilmsException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -1,6 +1,5 @@
 package be.vdab.videowinkel.services;
 
-import be.vdab.videowinkel.domain.Genre;
 import be.vdab.videowinkel.domain.Klant;
 import be.vdab.videowinkel.repositories.KlantRepository;
 import org.springframework.stereotype.Service;
